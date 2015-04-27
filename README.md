@@ -1,5 +1,17 @@
-Ruby Calisthenics
-=================
+#Rubybrain Gymnastics
+
+Downloaded from original, I have changed the specs to reflect new rspec
+syntax and going through one to pass each one.
+
+Original assignment information can be found below:
+
+
+
+------------
+
+
+##Ruby Calisthenics
+
 
 The goal of this multi-part assignment is to get you accustomed to basic
 Ruby coding and introduce you to RSpec, the unit testing tool we will be
@@ -58,7 +70,7 @@ basic string processing.  You can start from the template
 A palindrome is a word or phrase that reads the same forwards as
 backwards, ignoring case, punctuation, and nonword characters.  (A
 "nonword character" is defined for our purposes as "a character that
-Ruby regular expressions would treat as a nonword character".) 
+Ruby regular expressions would treat as a nonword character".)
 
 You will write a method `palindrome?` that returns true iff its
 receiver is a palindrome.
@@ -91,7 +103,7 @@ of times each word appears:
 
 Your solution shouldn't use for-loops, but iterators like `each` are
 permitted. As before, nonwords and case should be ignored. A word is
-defined as a string of characters between word boundaries. 
+defined as a string of characters between word boundaries.
 
 ## Part C:  Anagrams
 
@@ -100,11 +112,11 @@ into any other just by rearranging the letters.  For example, "rats",
 "tars" and "star" are an anagram group.
 
 Given a space separated list of words in a single string,
-write a method that groups them into anagram groups 
+write a method that groups them into anagram groups
 and returns a nested array of those groups (an array of arrays).
 Case doesn't matter in classifying string as anagrams
 (but case should be preserved in the output),
-and the order of the anagrams in the groups doesn't matter. 
+and the order of the anagrams in the groups doesn't matter.
 
 # Part 2: Basic Object-Oriented Programming for Dessert
 
@@ -114,18 +126,18 @@ Skeleton: `lib/dessert.rb`
 
 1. Create a class Dessert with getters and setters for name and
 calories.  The constructor should accept arguments for name and
-calories.  
+calories.
 
 2. Define instance methods `healthy?`, which returns true iff a
 dessert has less than 200 calories, and `delicious?`, which returns true
-for all desserts. 
+for all desserts.
 
 3. Create a class JellyBean that inherits from Dessert.  The constructor
 should accept a single argument giving the jelly bean's flavor; a
 newly-created jelly  bean should have 5 calories and its name should be
 the flavor plus "jelly bean", for example, "strawberry jelly bean".
 
-4. Add a getter and setter for the flavor. 
+4. Add a getter and setter for the flavor.
 
 5. Modify `delicious?` to return false if the flavor is
 `licorice`, but true for all other flavors.  The behavior of
@@ -139,7 +151,7 @@ Skeleton: `lib/rock_paper_scissors.rb`
 
 In a game of rock-paper-scissors, each player chooses to play Rock (R),
 Paper (P), or Scissors (S). The rules are: Rock breaks Scissors, Scissors
-cuts Paper, but Paper covers Rock. 
+cuts Paper, but Paper covers Rock.
 
 In a round of rock-paper-scissors, each player's name and strategy is
 encoded as an array of two elements
@@ -160,7 +172,7 @@ representing the winner:
 
 If either player's strategy is something other than "R", "P" or "S"
 (case-SENSITIVE), the method should raise a
-`RockPaperScissors::NoSuchStrategyError` exception and provide the message: 
+`RockPaperScissors::NoSuchStrategyError` exception and provide the message:
  "Strategy must be one of R,P,S".
 
 If both players use the same strategy, the first player is the winner.
@@ -172,7 +184,7 @@ that is, each element can be considered its own tournament.
 
     [
       [
-        [ ["Armando", "P"], ["Dave", "S"] ],      
+        [ ["Armando", "P"], ["Dave", "S"] ],
         [ ["Richard", "R"], ["Michael", "S"] ]
       ],
       [
@@ -186,14 +198,14 @@ beat Michael (R>S), so Dave and Richard would play (Richard wins since
 R>S); similarly, Allen would beat Omer, David E. would beat Richard X.,
 and Allen and Richard X. would play (Allen wins since S>P); and finally
 Richard would beat Allen since R>P.  That is, pairwise play continues
-until there is only a single winner. 
+until there is only a single winner.
 
 Write a method `RockPaperScissors.tournament_winner'
-that takes a tournament encoded as an 
+that takes a tournament encoded as an
 array and returns the winner (for the above example, it should return
 ['Richard', 'R']). You can assume that the array is well formed (that
 is, there are 2^n players, and each one participates in exactly one
-match per round). 
+match per round).
 
 HINT: Formulate the problem as a recursive one whose base case you
 solved in part 1.
@@ -209,9 +221,9 @@ getters and setters for object attributes on the fly.
 
 Define a method `attr_accessor_with_history` that provides the same
 functionality as attr accessor but also tracks every value the attribute
-has ever had: 
+has ever had:
 
-    class Foo 
+    class Foo
       attr_accessor_with_history :bar
     end
     f = Foo.new        # => #<Foo:0x127e678>
@@ -238,22 +250,22 @@ then the last line should just return `[nil,3]`, rather than
 If you're interested in how the template works,
 the first thing to notice is that if we define
 `attr_accessor_with_history` in class `Class`, we can use it as in the
-snippet 
+snippet
 above. This is because a Ruby class like `Foo` or `String` is actually just an
 object of class `Class`. (If that makes your brain hurt, just don't worry
-about it for now. It'll come.) 
+about it for now. It'll come.)
 
 The second thing to notice is that Ruby
 provides a method `class_eval` that takes a string and evaluates it in the
 context of the current class, that is, the class from which you're
 calling `attr_accessor_with_history`. This string will need to contain a
 method definition that implements a setter-with-history for the desired
-attribute `attr_name`. 
+attribute `attr_name`.
 
 HINTS:
 
 * Don't forget that the very first time the attribute receives a value,
-its history array will have to be initialized.  
+its history array will have to be initialized.
 * An
 attribute's initial value is always `nil` by default, so if
 `foo_history` is referenced before `foo` has ever been assigned, the
